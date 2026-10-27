@@ -1,45 +1,65 @@
-const STATS = [
-  { value: '12+', label: '年文化与传媒积淀' },
-  { value: '180+', label: '品牌与机构合作' },
-  { value: '40+', label: '文创系列落地' },
-  { value: 'A+', label: '内容与视觉标准' },
-]
+import useReveal from '../useReveal.js';
+import { steps } from '../content.js';
 
 export default function About() {
-  return (
-    <section className="about section" id="about">
-      <div className="container about__grid">
-        <div className="about__copy">
-          <p className="section-label">关于我们</p>
-          <h2 className="section-title">墨落秋声，文化新生</h2>
-          <p className="section-desc">
-            砚秋文化有限公司成立于东方美学与当代传播的交汇处。我们相信：
-            好的文化产品不只是「好看」，更是可被记住的故事、可被携带的气质、
-            可被持续传播的品牌资产。
-          </p>
-          <p className="about__extra">
-            从城市文旅 IP、博物馆联名、到企业品牌视觉与短视频内容矩阵，
-            砚秋以策展式的工作方法，连接设计、内容、媒介与商业。
-          </p>
-          <blockquote className="about__quote">
-            「一墨含千秋，一念见当代。」
-          </blockquote>
-        </div>
+  const ref = useReveal();
 
-        <div className="about__panel">
-          <div className="about__seal" aria-hidden="true">
-            <img src="/assets/logo-mark.svg" alt="" />
-          </div>
-          <ul className="about__stats">
-            {STATS.map((s) => (
-              <li key={s.label}>
-                <strong>{s.value}</strong>
-                <span>{s.label}</span>
+  return (
+    <section className="section about" id="about">
+      <div className="wrap reveal" ref={ref}>
+        <div className="about-grid">
+          <div>
+            <p className="kicker kicker-dark">关于砚秋</p>
+            <h2>一方砚台，托住品牌要说的话</h2>
+            <div className="prose">
+              <p>
+                砚秋文化是一家文化创意与品牌传播工作室。我们从「砚」出发——一方承纸、承时间、也承得住品牌语气的器物——为博物馆、城市品牌与当代机构建立清晰而有温度的叙事。
+              </p>
+              <p>
+                名字里的「秋」，是色温，也是收成。把散落的文化资产，收成可以被看见、被使用、被记住的内容与产品。石脉、纸纹、节气与当代媒介，在同一张台面上工作。
+              </p>
+            </div>
+            <ul className="principles">
+              <li>
+                <strong>砚石</strong>
+                <span>承托品牌的器物尺度</span>
               </li>
-            ))}
-          </ul>
+              <li>
+                <strong>秋色</strong>
+                <span>视觉里稳定的温度</span>
+              </li>
+              <li>
+                <strong>纸页</strong>
+                <span>内容真正发生的地方</span>
+              </li>
+            </ul>
+          </div>
+          <figure className="about-figure">
+            <img
+              src="/assets/about-studio.jpg"
+              alt="砚秋工作室：长木桌上的砚台、纸样，以及窗外的银杏"
+              width="1280"
+              height="720"
+            />
+            <figcaption>
+              <span className="seal" aria-hidden="true">
+                <em>砚</em>
+                <em>秋</em>
+              </span>
+              杭州 · 工作室
+            </figcaption>
+          </figure>
         </div>
+        <ol className="steps">
+          {steps.map((step) => (
+            <li key={step.title}>
+              <span>{step.index}</span>
+              <strong>{step.title}</strong>
+              <p>{step.text}</p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
-  )
+  );
 }

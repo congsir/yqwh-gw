@@ -1,59 +1,57 @@
-import { useEffect, useState } from 'react'
-
-const LINKS = [
-  { href: '#about', label: '关于我们' },
-  { href: '#services', label: '服务' },
-  { href: '#works', label: '作品' },
-  { href: '#contact', label: '联系' },
-]
+import { useEffect, useState } from 'react';
+import Logo from './Logo.jsx';
+import { nav } from '../content.js';
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [open])
+    document.body.classList.toggle('nav-open', open);
+    return () => document.body.classList.remove('nav-open');
+  }, [open]);
+
+  useEffect(() => {
+    const onKey = (event) => {
+      if (event.key === 'Escape') setOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
 
   return (
-    <header className={`nav ${scrolled || open ? 'nav--solid' : ''}`}>
-      <div className="nav__inner container">
-        <a href="#top" className="nav__brand" aria-label="砚秋文化首页">
-          <img src="/assets/logo.svg" alt="砚秋文化" className="nav__logo" />
-        </a>
-
-        <nav className="nav__links" aria-label="主导航">
-          {LINKS.map((l) => (
-            <a key={l.href} href={l.href}>{l.label}</a>
-          ))}
-        </nav>
-
-        <a href="#contact" className="nav__cta btn btn-ghost">预约咨询</a>
-
+    <header className={`nav ${scrolled ? 'is-scrolled' : ''}`}>
+      <div className="wrap nav-bar">
+        <Logo />
         <button
-          className={`nav__toggle ${open ? 'is-open' : ''}`}
-          aria-label={open ? '关闭菜单' : '打开菜单'}
+          className="nav-toggle"
+          type="button"
           aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
+          aria-controls="site-nav"
+          onClick={() => setOpen((value) => !value)}
         >
-          <span /><span /><span />
+          <span className="sr-only">{open ? '关闭菜单' : '打开菜单'}</span>
+          <i />
+          <i />
         </button>
-      </div>
-
-      <div className={`nav__drawer ${open ? 'is-open' : ''}`}>
-        {LINKS.map((l) => (
-          <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
-        ))}
-        <a href="#contact" className="btn btn-primary" onClick={() => setOpen(false)}>预约咨询</a>
+        <nav id="site-nav" className={`nav-links ${open ? 'is-open' : ''}`} aria-label="主导航">
+          {nav.map((item) => (
+            <a key={item.href} href={item.href} onClick={() => setOpen(false)}>
+              {item.label}
+            </a>
+          ))}
+          <a className="btn btn-gold btn-small" href="#contact" onClick={() => setOpen(false)}>
+            预约咨询
+          </a>
+        </nav>
       </div>
     </header>
-  )
+  );
 }

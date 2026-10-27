@@ -1,15 +1,17 @@
-import Nav from './components/Nav'
-import Hero from './components/Hero'
-import About from './components/About'
-import Services from './components/Services'
-import Works from './components/Works'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
-import './App.css'
+import Nav from './components/Nav.jsx';
+import Hero from './components/Hero.jsx';
+import About from './components/About.jsx';
+import Services from './components/Services.jsx';
+import Works from './components/Works.jsx';
+import Contact from './components/Contact.jsx';
+import Footer from './components/Footer.jsx';
 
 export default function App() {
   return (
     <>
+      <a className="skip" href="#about">
+        跳到正文
+      </a>
       <Nav />
       <main>
         <Hero />
@@ -20,5 +22,5 @@ export default function App() {
       </main>
       <Footer />
     </>
-  )
+  );
 }

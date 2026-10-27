@@ -1,46 +1,26 @@
-# 砚秋文化有限公司 · 官网 Demo
+# 砚秋文化
 
-高端文创 / 传媒企业官网展示页（静态 Demo）。含自定义品牌色、SVG Logo、Three.js WebGL 首屏。
+砚秋文化（Yanqiu Culture）官网。文化创意与品牌传播工作室的单页站点，视觉围绕砚台、秋色与纸页。
 
-## 品牌速览
-
-| Token | Hex | 用途 |
-|--------|-----|------|
-| Ink | `#0B0D10` | 主背景 |
-| Ink Soft | `#14181F` | 卡片 / 面板 |
-| Amber | `#C4A574` | 主强调色（秋金） |
-| Amber Light | `#E8D5A8` | 高光文字 |
-| Cream | `#F5F0E8` | 主文字 |
-| Seal | `#A85A4A` | 次强调（朱印感） |
-
-- Logo：`public/assets/logo.svg`（字标 + 墨滴印记）
-- 印记：`public/assets/logo-mark.svg`
-- Favicon：`public/assets/favicon.svg`
-
-## 本地预览
-
-在仓库根目录执行：
+## 开发
 
 ```bash
 npm install
 npm run dev
 ```
 
-默认开发地址：`http://localhost:5173/`（以终端输出为准）。
-
 生产构建：
 
 ```bash
+npm install
 npm run build
 npm run preview
 ```
 
-## 技术栈
+## 结构
 
-- Vite + React
-- Three.js + `@react-three/fiber`（首屏 WebGL：墨带 / 粒子 / 墨核）
-- 无后端；联系表单为前端 Demo 提示
+- `src/components/HeroScene.jsx`：Three.js 砚台、秋金丝带与落叶。WebGL 不可用时退回平面砚台。
+- `public/assets/`：页首氛围图、工作室照片，以及 `works/` 下的作品图片。
+- `BRAND.md`：色彩、字体、标志与语气。
 
-## 页面结构
-
-单页滚动：首页首屏 → 关于我们 → 服务 → 作品 → 联系我们 → 页脚
+中文字体为 Noto Serif SC / Noto Sans SC，许可见 `public/fonts/OFL.txt`。
