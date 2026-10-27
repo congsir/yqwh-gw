@@ -19,7 +19,7 @@ npm run preview
 
 ## 结构
 
-- `src/components/HeroScene.jsx`：Three.js 砚台、秋金丝带与落叶。WebGL 不可用时退回平面砚台。
+- `src/components/HeroScene.jsx`：Three.js 雕刻砚台、秋金丝带与落叶。WebGL 不可用时改用 `public/assets/inkstone-fallback.png`。
 - `public/assets/`：页首氛围图、工作室照片，以及 `works/` 下的作品图片。
 - `BRAND.md`：色彩、字体、标志与语气。
 
