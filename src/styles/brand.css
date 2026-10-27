@@ -1,0 +1,47 @@
+/* 砚秋文化 Brand Tokens
+   Tone: ink · autumn · literary contemporary luxury
+*/
+:root {
+  /* Primary */
+  --ink: #0B0D10;
+  --ink-soft: #14181F;
+  --ink-elevated: #1C222C;
+  --charcoal: #2A3140;
+
+  /* Accent — autumn gold */
+  --amber: #C4A574;
+  --amber-light: #E8D5A8;
+  --amber-deep: #8B6B3D;
+
+  /* Paper / cream */
+  --cream: #F5F0E8;
+  --cream-muted: #D9D2C5;
+  --paper: #EDE6DA;
+
+  /* Secondary — muted vermillion (seal red) */
+  --seal: #A85A4A;
+  --seal-soft: #C47A6A;
+
+  /* Teal whisper (optional accent) */
+  --teal-mute: #4A6B6A;
+
+  /* Text */
+  --text: #F5F0E8;
+  --text-secondary: rgba(245, 240, 232, 0.72);
+  --text-muted: rgba(245, 240, 232, 0.48);
+
+  /* Borders / glass */
+  --border: rgba(196, 165, 116, 0.22);
+  --border-soft: rgba(245, 240, 232, 0.08);
+  --glass: rgba(20, 24, 31, 0.72);
+
+  /* Typography */
+  --font-serif: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  --font-sans: "Noto Sans SC", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+
+  /* Spacing / motion */
+  --radius: 12px;
+  --radius-lg: 20px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --max: 1180px;
+}
